@@ -100,7 +100,6 @@ export default function ProductPage(): JSX.Element {
     }
 
     const handleIsCurrentUser = () => {
-        console.log(isUserLoggedIn())
         if(!isUserLoggedIn()) return true
 
         if(product && isCurrentUser(product.author)) return false

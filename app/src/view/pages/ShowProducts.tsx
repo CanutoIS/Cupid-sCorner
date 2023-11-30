@@ -51,7 +51,7 @@ export default function ShowProducts():JSX.Element {
         <section className="flex flex-col max-w-[1400px] items-center my-10 gap-8">
             <div className="w-full flex justify-between px-10 md:mb-[-50px] md:ml-20">
                 <p className="flex items-center gap-2 cursor-pointer" onClick={handleGoToHome}><span className="material-symbols-outlined notranslate">keyboard_backspace</span>Home</p>
-                <p className={`flex items-center justify-end gap-2 cursor-pointer ${context.category === 'All products' ? 'hidden' : ''}`} onClick={handleShowAllProducts}>View all products<span className="material-symbols-outlined notranslate">arrow_right_alt</span></p>
+                <p className={`flex items-center justify-end gap-2 cursor-pointer text-right ${context.category === 'All products' ? 'hidden' : ''}`} onClick={handleShowAllProducts}>View all products<span className="material-symbols-outlined notranslate">arrow_right_alt</span></p>
             </div>
             <h1 className="text-4xl text-center">{context.category}</h1>
             <ShowCategoriesTopBar

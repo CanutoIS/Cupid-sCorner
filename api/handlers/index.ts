@@ -9,7 +9,7 @@ import retrieveProductsByCategoryHandler from './product/retrieveProductsByCateg
 import saveProductToCartHandler from './product/saveProductToCartHandler.js'
 import retrieveUserCartProductsHandler from './product/retrieveUserCartProductsHandler.js'
 import removeProductFromCartHandler from './product/removeProductFromCartHandler.js'
-import deleteProductHandler from './product/deleteProductHandler.js'
+import deleteUserProductHandler from './product/deleteUserProductHandler.js'
 import UpdateUserAvatarHandler from './user/UpdateUserAvatarHandler.js'
 import serverStatus from './helpers/serverStatus.js'
 
@@ -25,7 +25,7 @@ export {
     saveProductToCartHandler,
     retrieveUserCartProductsHandler,
     removeProductFromCartHandler,
-    deleteProductHandler,
+    deleteUserProductHandler,
     UpdateUserAvatarHandler,
     serverStatus
 }

@@ -34,18 +34,19 @@ export default (userId: string, productId: string): Promise<ProductProps[]> => {
         const user = await User.findById(userId)
         if(!user) throw new ExistenceError('User not found.')
 
-        const product = await Product.findById(productId).select('_id images name price rating').lean()
+        const product = await Product.findById(productId).select('_id').lean()
         if(!product) throw new ExistenceError('Product not found.')
 
         await Product.deleteOne({ _id: productId })
 
-        const products = await Product.find({ author: userId }).lean()
+        const products = await Product.find({ author: userId }).select('_id images name price rating').lean()
 
         const updatedProducts = products.map((product: any) => {
-            product.author = product.author.toString()
-            
             product.id = product._id.toString()
             delete product._id
+
+            product.image = product.images[0]
+            delete product.images
 
             return product
         })

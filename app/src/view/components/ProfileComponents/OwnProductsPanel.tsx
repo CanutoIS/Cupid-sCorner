@@ -1,9 +1,9 @@
 import { useLocation } from "react-router-dom"
 import { DeleteProductModal } from ".."
-import { deleteProduct, retrieveUserProducts } from "../../../logic"
+import { deleteUserProduct, retrieveUserProducts } from "../../../logic"
 import { context } from "../../../ui"
 import { useAppContext, useHandleErrors } from "../../hooks"
-import { useState, useEffect } from "react"
+import { useState, useEffect, FormEvent } from "react"
 
 type ProductProps = {
     id: string
@@ -14,18 +14,19 @@ type ProductProps = {
 }
 
 interface OwnProductsPanelProps {
+    userProducts: ProductProps[] | undefined
+    setUserProducts: (products: ProductProps[]) => void
     removalState: boolean
     handleToggleMenu: () => void
     menu: boolean
 }
 
-export default function OwnProductsPanel({ removalState, handleToggleMenu, menu }: OwnProductsPanelProps): JSX.Element {
+export default function OwnProductsPanel({ userProducts, setUserProducts, removalState, handleToggleMenu, menu }: OwnProductsPanelProps): JSX.Element {
     const { navigate, freeze, unfreeze } = useAppContext()
     const handleErrors = useHandleErrors()
     const location = useLocation()
     const currentPath = location.pathname
     
-    const [userProducts, setUserProducts] = useState<ProductProps[]>()
     const [deleteProductModal, setDeleteProductModal] = useState(false)
 
     useEffect(() => {
@@ -35,7 +36,7 @@ export default function OwnProductsPanel({ removalState, handleToggleMenu, menu 
             window.scrollTo({ top: 0 })
             
             const products = await retrieveUserProducts()
-
+            
             setUserProducts(products)
 
             unfreeze && unfreeze()
@@ -50,15 +51,19 @@ export default function OwnProductsPanel({ removalState, handleToggleMenu, menu 
         setDeleteProductModal(true)
     }
 
-    const handleDeleteProductFromStore = () => {
+    const handleDeleteProductFromStore = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        
         handleErrors(async () => {
             freeze && freeze()
 
-            const updatedProducts = await deleteProduct(context.productId)
+            const updatedProducts = await deleteUserProduct(context.productId)
 
             setUserProducts(updatedProducts)
 
             unfreeze && unfreeze()
+
+            setDeleteProductModal(false)
         })
     }
     

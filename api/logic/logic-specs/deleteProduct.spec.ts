@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { deleteProduct } from '../index.js'
+import { deleteUserProduct } from '../index.js'
 import { cleanUp, generate, populate } from './helpers-test/index.js'
 import mongoose, { Types, Document } from 'mongoose'
 import { errors } from 'com'
@@ -28,7 +28,7 @@ interface ProductValuesProps {
     category: string
 }
 
-describe('deleteProduct', () => {
+describe('deleteUserProduct', () => {
     let user: UserProps, email: string, productValues1: ProductValuesProps, productValues2: ProductValuesProps
 
     before(async () => await mongoose.connect(process.env.MONGODB_URL))
@@ -76,7 +76,7 @@ describe('deleteProduct', () => {
 
             const firstProductId = products[0]._id.toString()
             
-            const newProducts = await deleteProduct(userId, firstProductId)
+            const newProducts = await deleteUserProduct(userId, firstProductId)
             
             expect(newProducts).to.be.an('array')
             expect(newProducts).to.have.lengthOf(1)
@@ -91,7 +91,7 @@ describe('deleteProduct', () => {
             const wrongUserId = '6102a3cbf245ef001c9a1837'
             const productId = '6102a3cbf245ef001c9a1837'
 
-            await deleteProduct(wrongUserId, productId)
+            await deleteUserProduct(wrongUserId, productId)
 
         } catch (error: any) {
             expect(error).to.be.instanceOf(ExistenceError)
@@ -106,7 +106,7 @@ describe('deleteProduct', () => {
             
             const WrongProductId = '6102a3cbf245ef001c9a1837'
 
-            await deleteProduct(userId, WrongProductId)
+            await deleteUserProduct(userId, WrongProductId)
 
         } catch (error: any) {
             expect(error).to.be.instanceOf(ExistenceError)
@@ -114,33 +114,33 @@ describe('deleteProduct', () => {
         }
     })
 
-    it('fails on empty user id', async () => expect(() => deleteProduct('', '6102a3cbf245ef001c9a1837')).to.throw(RangeError, 'The user id does not have 24 characters.'))
+    it('fails on empty user id', async () => expect(() => deleteUserProduct('', '6102a3cbf245ef001c9a1837')).to.throw(RangeError, 'The user id does not have 24 characters.'))
 
     it('fails on a non-string user id', async () => {
         const testProductId = '6102a3cbf245ef001c9a1837'
 
-        expect(() => deleteProduct(true as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
-        expect(() => deleteProduct([] as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
-        expect(() => deleteProduct({} as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
-        expect(() => deleteProduct(undefined as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
-        expect(() => deleteProduct(1 as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
+        expect(() => deleteUserProduct(true as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
+        expect(() => deleteUserProduct([] as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
+        expect(() => deleteUserProduct({} as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
+        expect(() => deleteUserProduct(undefined as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
+        expect(() => deleteUserProduct(1 as any, testProductId)).to.throw(TypeError, 'The user id is not a string.')
     })
 
-    it('fails on not hexadecimal user id', async () => expect(() => deleteProduct('-102a3cbf245ef001c9a1837', '6102a3cbf245ef001c9a1837')).to.throw(ContentError, 'The user id is not hexadecimal.'))
+    it('fails on not hexadecimal user id', async () => expect(() => deleteUserProduct('-102a3cbf245ef001c9a1837', '6102a3cbf245ef001c9a1837')).to.throw(ContentError, 'The user id is not hexadecimal.'))
     
-    it('fails on empty product id', async () => expect(() => deleteProduct('6102a3cbf245ef001c9a1837', '' as any)).to.throw(RangeError, 'The product id does not have 24 characters.'))
+    it('fails on empty product id', async () => expect(() => deleteUserProduct('6102a3cbf245ef001c9a1837', '' as any)).to.throw(RangeError, 'The product id does not have 24 characters.'))
     
     it('fails on a non-string product id', async () => {
         const testUserId = '6102a3cbf245ef001c9a1837'
         
-        expect(() => deleteProduct(testUserId, true as any)).to.throw(TypeError, 'The product id is not a string.')
-        expect(() => deleteProduct(testUserId, [] as any)).to.throw(TypeError, 'The product id is not a string.')
-        expect(() => deleteProduct(testUserId, {} as any)).to.throw(TypeError, 'The product id is not a string.')
-        expect(() => deleteProduct(testUserId, undefined as any)).to.throw(TypeError, 'The product id is not a string.')
-        expect(() => deleteProduct(testUserId, 1 as any)).to.throw(TypeError, 'The product id is not a string.')
+        expect(() => deleteUserProduct(testUserId, true as any)).to.throw(TypeError, 'The product id is not a string.')
+        expect(() => deleteUserProduct(testUserId, [] as any)).to.throw(TypeError, 'The product id is not a string.')
+        expect(() => deleteUserProduct(testUserId, {} as any)).to.throw(TypeError, 'The product id is not a string.')
+        expect(() => deleteUserProduct(testUserId, undefined as any)).to.throw(TypeError, 'The product id is not a string.')
+        expect(() => deleteUserProduct(testUserId, 1 as any)).to.throw(TypeError, 'The product id is not a string.')
     })
     
-    it('fails on not hexadecimal product id', async () => expect(() => deleteProduct('6102a3cbf245ef001c9a1837', '-102a3cbf245ef001c9a1837')).to.throw(ContentError, 'The product id is not hexadecimal.'))
+    it('fails on not hexadecimal product id', async () => expect(() => deleteUserProduct('6102a3cbf245ef001c9a1837', '-102a3cbf245ef001c9a1837')).to.throw(ContentError, 'The product id is not hexadecimal.'))
 
     after(async () => await mongoose.disconnect())
 })

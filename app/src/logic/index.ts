@@ -12,7 +12,7 @@ import retrieveProductsByCategory from "./product/retrieveProductsByCategory"
 import saveProductToCart from "./product/saveProductToCart"
 import retrieveUserCartProducts from "./product/retrieveUserCartProducts" 
 import removeProductFromCart from "./product/removeProductFromCart"
-import deleteProduct from "./product/deleteProduct"
+import deleteUserProduct from "./product/deleteUserProduct"
 import logoutUser from "./user/logoutUser"
 import UpdateUserAvatar from "./user/UpdateUserAvatar"
 
@@ -31,7 +31,7 @@ export {
     saveProductToCart,
     retrieveUserCartProducts,
     removeProductFromCart,
-    deleteProduct,
+    deleteUserProduct,
     logoutUser,
     UpdateUserAvatar,
 }

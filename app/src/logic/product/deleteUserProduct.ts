@@ -25,7 +25,7 @@ type ProductProps = {
     rating: string
 }
 
-export default function createProduct(productId: string): Promise<ProductProps[]> {
+export default function deleteUserProduct(productId: string): Promise<ProductProps[]> {
     validateId(productId, 'product id')
 
     return (async () => {

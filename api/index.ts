@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import { registerUserHandler, authenticateUserHandler, retrieveUserHandler, retrieveUserProductsHandler, createProductHandler, retrieveProductHandler, retrieveAllProductsHandler, retrieveProductsByCategoryHandler, saveProductToCartHandler, retrieveUserCartProductsHandler, removeProductFromCartHandler, deleteProductHandler, UpdateUserAvatarHandler, serverStatus } from './handlers/index.js'
+import { registerUserHandler, authenticateUserHandler, retrieveUserHandler, retrieveUserProductsHandler, createProductHandler, retrieveProductHandler, retrieveAllProductsHandler, retrieveProductsByCategoryHandler, saveProductToCartHandler, retrieveUserCartProductsHandler, removeProductFromCartHandler, deleteUserProductHandler, UpdateUserAvatarHandler, serverStatus } from './handlers/index.js'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import multer from 'multer'
@@ -42,7 +42,7 @@ mongoose.connect(process.env.MONGODB_URL)
         
         api.get('/removeProduct/:productId', removeProductFromCartHandler)
         
-        api.delete('/deleteProduct/:productId', deleteProductHandler)
+        api.delete('/deleteProduct/:productId', deleteUserProductHandler)
         
         api.post('/user/userAvatar', jsonBodyParser, UpdateUserAvatarHandler)
 

@@ -9,7 +9,7 @@ import retrieveProductsByCategory from "./product/retrieveProductsByCategory.js"
 import saveProductToCart from "./product/saveProductToCart.js"
 import retrieveUserCartProducts from "./product/retrieveUserCartProducts.js"
 import removeProductFromCart from "./product/removeProductFromCart.js"
-import deleteProduct from "./product/deleteProduct.js"
+import deleteUserProduct from "./product/deleteUserProduct.js"
 import UpdateUserAvatar from "./user/UpdateUserAvatar.js"
 
 export {
@@ -24,6 +24,6 @@ export {
     saveProductToCart,
     retrieveUserCartProducts,
     removeProductFromCart,
-    deleteProduct,
+    deleteUserProduct,
     UpdateUserAvatar,
 }

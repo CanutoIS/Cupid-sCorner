@@ -8,10 +8,22 @@ interface Profile {
     handleToggleMenu: () => void
 }
 
+type ProductProps = {
+    id: string
+    name: string
+    image: string
+    price: number
+    rating: string
+}
+
 export default function Profile({ menu, handleToggleMenu }: Profile): JSX.Element {
     const stopHeight = useGetStopHeight()
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const [removalState, setRemovalState] = useState(false)
+    const [logoutModal, setLogoutModal] = useState(false)
+    const [updateAvatarModal, setUpdateAvatarModal] = useState(false)
+    const [userProducts, setUserProducts] = useState<ProductProps[]>()
 
     useEffect(() => {
         setScreenWidth(window.innerWidth)
@@ -33,12 +45,11 @@ export default function Profile({ menu, handleToggleMenu }: Profile): JSX.Elemen
 
     const handleResize = () => setScreenWidth(window.innerWidth)
 
-    const [removalState, setRemovalState] = useState(false)
-    const [logoutModal, setLogoutModal] = useState(false)
-    const [updateAvatarModal, setUpdateAvatarModal] = useState(false)
 
     const handleToggleRemovalState = () => {
-        handleToggleMenu()
+        if(!userProducts?.length) return
+        
+        if(screenWidth < 1024) handleToggleMenu()
     
         setRemovalState(!removalState)
     }
@@ -57,6 +68,8 @@ export default function Profile({ menu, handleToggleMenu }: Profile): JSX.Elemen
                 removalState={removalState}
                 handleToggleMenu={handleToggleMenu}
                 menu={menu}
+                userProducts={userProducts}
+                setUserProducts={setUserProducts}
             />
             <ProfileSideBar
                 stopHeight={stopHeight}

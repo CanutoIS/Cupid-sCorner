@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import { useAppContext, useHandleErrors } from "../../hooks";
 import { Button, Form, ModalContainer, ModalWindow } from "../../library"
 import { retrieveProduct } from "../../../logic";
@@ -6,7 +6,7 @@ import { context } from "../../../ui";
 
 interface DeleteProductModalProps {
     setDeleteProductModal: (value: boolean) => void
-    handleDeleteProductFromStore: () => void
+    handleDeleteProductFromStore: (event: FormEvent<HTMLFormElement>) => void
 }
 
 interface ProductProps {
