@@ -57,7 +57,7 @@ export default function Home(): JSX.Element {
 
     return (
         <Container className="absolute top-0 left-0 pt-28">
-            <main className="max-w-[1400px] w-screen h-full m-auto">
+            <main className="max-w-[1400px] w-screen h-full m-auto bg-white">
                 <HomeTop />
                 {products ? <>
                     <BestSellingProducts

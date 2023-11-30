@@ -52,7 +52,7 @@ export default function Profile({ menu, handleToggleMenu }: Profile): JSX.Elemen
     const handleToggleUpdateAvatarModal = () => setUpdateAvatarModal(!updateAvatarModal)
 
     return <Container>
-        <section className="w-full h-full m-auto pt-28 flex items-center">
+        <section className="w-full h-full m-auto pt-28 flex items-center bg-white">
             <OwnProductsPanel
                 removalState={removalState}
                 handleToggleMenu={handleToggleMenu}

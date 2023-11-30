@@ -66,7 +66,7 @@ export default function CartPage({ menu, handleToggleMenu }: CartPage): JSX.Elem
     }
 
     return <Container className="mt-28">
-        <section className="w-full min-h-full flex justify-between">
+        <section className="w-full min-h-full flex justify-between bg-white">
             <ProductsToBuyPanel
                 userCartProducts={userCartProducts}
                 handleRetrieveUserCartProducts={handleRetrieveUserCartProducts}

@@ -78,9 +78,9 @@ export default function ProductFieldsForm({ productValues, handleOnChange, handl
             <div className="w-full border-t border-gray-500"></div>
 
             <div className="w-full flex justify-center my-2 lg:hidden">
-                <span className="material-symbols-outlined">arrow_downward_alt</span>
+                <span className="material-symbols-outlined notranslate">arrow_downward_alt</span>
                 <h2 className="text-xl text-center">Check out the preview of the product below</h2>
-                <span className="material-symbols-outlined">arrow_downward_alt</span>
+                <span className="material-symbols-outlined notranslate">arrow_downward_alt</span>
             </div>
 
             <Button className="">Upload product</Button>

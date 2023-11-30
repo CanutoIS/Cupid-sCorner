@@ -1,5 +1,5 @@
-import { useHandleCurrentCategories } from "../hooks"
-import { context } from "../../ui"
+import { useHandleCurrentCategories } from "../../hooks"
+import { context } from "../../../ui"
 
 interface ShowCategoriesTopBar {
     setCategory: (category: string) => void
@@ -9,7 +9,7 @@ export default function ShowCategoriesTopBar({ setCategory }: ShowCategoriesTopB
     const { currentCategories, handleChangeCategories } = useHandleCurrentCategories()
 
     return (
-        <div className="flex gap-2 w-3/4 justify-between items-center">
+        <div className="flex gap-2 w-3/4 justify-between items-center bg-white">
             <div
                 className="w-8 flex justify-end items-center rounded bg-opacity-50 cursor-pointer select-none"
                 onClick={() => handleChangeCategories("left")}

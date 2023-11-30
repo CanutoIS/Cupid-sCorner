@@ -1,4 +1,4 @@
-import Container from "../library/Container"
+import Container from "../../library/Container"
 import { useEffect, useState } from 'react'
 
 export default function LoaderContent(): JSX.Element {

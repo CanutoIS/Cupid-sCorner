@@ -34,6 +34,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: 'mulish', sans-serif;
+  background-color: white;
 }
 
 h1 {

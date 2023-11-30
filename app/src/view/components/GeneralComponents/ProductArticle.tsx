@@ -1,5 +1,5 @@
-import { context } from "../../ui"
-import { useAppContext } from "../hooks"
+import { context } from "../../../ui"
+import { useAppContext } from "../../hooks"
 
 interface ProductProps {
     id: string

@@ -99,6 +99,16 @@ export default function ProductPage(): JSX.Element {
         document.body.classList.remove('overflow-hidden')
     }
 
+    const handleIsCurrentUser = () => {
+        console.log(isUserLoggedIn())
+        if(!isUserLoggedIn()) return true
+
+        if(product && isCurrentUser(product.author)) return false
+
+        return true
+    }
+
+    
     return <>
     <Container className={`absolute top-0 left-0 bg-white pt-28`}>
         {product ? <section className="w-full max-w-[1400px] hidden xl:flex flex-col bg-red-50 min-h-[700px] gap-6 p-10 2xl:p-20">
@@ -119,7 +129,7 @@ export default function ProductPage(): JSX.Element {
                     </div>
                     <p className="w-full">{product.description}</p>
                     <div className="flex flex-col w-full items-center">
-                        <Form className="flex-col items-center w-full" onSubmit={handleAddToCart}>
+                        {handleIsCurrentUser() && <Form className="flex-col items-center w-full" onSubmit={handleAddToCart}>
                             <div className="flex items-center justify-between w-2/3">
                                 <div className='flex flex-col items-center mr-4'>
                                     <p className="text-lg">Final price:</p>
@@ -131,13 +141,13 @@ export default function ProductPage(): JSX.Element {
                                 </div>
                             </div>
                             <Button className="hover:bg-gray-200 hover:border-gray-200 mt-6">Add to cart</Button>
-                        </Form>
+                        </Form>}
                     </div>
                 </div>
             </div>
         </section>
         :
-        <section className="flex xl:hidden h-[700px] "/>}
+        <section className="flex xl:hidden h-[700px] bg-white"/>}
         {product ? <section className="flex xl:hidden w-full justify-center bg-red-50 min-h-[700px] gap-6 p-10 2xl:p-20 pb-16">
             <div className="max-w-[700px] flex flex-col gap-6">
                 <h1 className="text-center text-4xl">{product.name}</h1>
@@ -155,7 +165,7 @@ export default function ProductPage(): JSX.Element {
                         <p>Category: <b>{product.category}</b></p>
                         <p>Price: <b>{product.price}</b></p>
                     </div>
-                    {!isCurrentUser(product.author) && <Form className="flex-col items-center" onSubmit={handleAddToCart}>
+                    {handleIsCurrentUser() && <Form className="flex-col items-center" onSubmit={handleAddToCart}>
                         <div className="flex items-center justify-between gap-4">
                             <div className='flex items-center gap-1'>
                                 <p className="text-center">Final price:</p>

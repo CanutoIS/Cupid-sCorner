@@ -1,4 +1,4 @@
-import ModalContainer from '../library/ModalContainer'
+import ModalContainer from '../../library/ModalContainer'
 
 interface AlertProps {
     error: string
