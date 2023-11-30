@@ -10,7 +10,7 @@ export default function Alert({ error, level, onAccept }: AlertProps) {
     console.log('Alert -> render')
 
     return <ModalContainer className='fixed z-50 top-0'>
-        <div className="min-w-40 min-h-20 p-4 flex flex-col items-center justify-center gap-4 rounded bg-white absolute z-10 h-60 w-5/6 md:w-96" >
+        <div className="min-w-40 min-h-20 p-4 flex flex-col items-center justify-center gap-4 rounded bg-white absolute z-10 h-60 w-5/6 sm:w-96" >
             {(level === 'warning' || level === 'error') ?
                 <div className='w-full flex justify-center items-center'>
                     <h1 className='text-3xl'>Oops!</h1>

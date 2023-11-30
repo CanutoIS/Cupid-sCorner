@@ -16,7 +16,9 @@ export default function HomeTop(): JSX.Element {
 
     return (
         <section
-            className={`w-screen max-w-full h-full bg-[url(/presentation-images/home-image-${imageNumber}.jpg)] bg-cover bg-center flex flex-col items-center justify-around mb-2 gap-6 md:gap-24`}
+            className={`w-screen max-w-full h-full bg-cover bg-center flex flex-col items-center justify-around mb-2 gap-6 md:gap-24`} style={{
+                backgroundImage: `url(/presentation-images/home-image-${imageNumber}.jpg)`
+            }}
         >
             <img
                 src="/images/CupidsCornerLogo.png"
@@ -48,7 +50,9 @@ export default function HomeTop(): JSX.Element {
                                 className="w-5/12 md:w-1/5 flex flex-col h-20 justify-end cursor-pointer md:h-48 m-2"
                                 onClick={() => handleOpenCategoryPage(category)}
                             >
-                                <div className={`category w-full h-44 rounded bg-[url(/category-images/category-${categoryIndex}.jpg)] bg-cover bg-center border-2 border-white flex justify-center items-center relative `}>
+                                <div className={`category w-full h-44 rounded bg-cover bg-center border-2 border-white flex justify-center items-center relative `} style={{
+                                    backgroundImage: `url(/category-images/category-${categoryIndex}.jpg)`
+                                }}>
                                     <p className="text-white lg:text-2xl text-center font-bold w-fit mx-2">
                                         {category}
                                     </p>
