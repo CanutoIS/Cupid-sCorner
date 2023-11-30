@@ -35,18 +35,6 @@ export const context = {
     get productId(): string {
         return sessionStorage.productId
     },
-    set promotionId(promotionId: string) {
-        if (!promotionId) {
-            delete sessionStorage.promotionId
-
-            return
-        }
-
-        sessionStorage.promotionId = promotionId
-    },
-    get promotionId(): string {
-        return sessionStorage.promotionId
-    },
     set imageNumber(imageNumber: string) {
         if (!imageNumber) {
             delete sessionStorage.imageNumber

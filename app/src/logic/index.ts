@@ -1,5 +1,4 @@
 import context from "./context"
-import getUserId from "./user/getUserId"
 import isCurrentUser from "./user/isCurrentUser"
 import isUserLoggedIn from "./user/isUserLoggedIn"
 import registerUser from "./user/registerUser"
@@ -19,7 +18,6 @@ import UpdateUserAvatar from "./user/UpdateUserAvatar"
 
 export {
     context,
-    getUserId,
     isCurrentUser,
     isUserLoggedIn,
     registerUser,

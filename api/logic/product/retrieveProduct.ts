@@ -39,6 +39,8 @@ export default (productId: string): Promise<ProductProps> => {
         product.id = product._id.toString()
         delete product._id
 
+        product.author = product.author.toString()
+
         return product
     })()
 }

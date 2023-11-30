@@ -23,7 +23,7 @@ interface ProductValuesProps {
     author: InstanceType<typeof ObjectId>
     name: string
     images: string[]
-    price: number
+    price: string
     description: string
     category: string
 }
@@ -92,7 +92,7 @@ describe('createProduct', () => {
             const _user = await User.findOne({ email: user.email }) as Document
             const userId = _user._id.toString()
 
-            const productWithoutImages = { author: new ObjectId('6102a3cbf245ef001c9a1837'), name: 'New product', price: 19.99, description: 'Product description', category: 'Jewelry' } 
+            const productWithoutImages = { author: new ObjectId('6102a3cbf245ef001c9a1837'), name: 'New product', price: '19.99', description: 'Product description', category: 'Jewelry' } 
 
             await createProduct(userId, productWithoutImages as any)
         } catch (error: any) {
@@ -106,7 +106,7 @@ describe('createProduct', () => {
             const _user = await User.findOne({ email: user.email }) as Document
             const userId = _user._id.toString()
 
-            const productWithoutImages = { author: new ObjectId('6102a3cbf245ef001c9a1837'), images: 'wrong-images-type-value', name: 'New product', price: 19.99, description: 'Product description', category: 'Jewelry' } 
+            const productWithoutImages = { author: new ObjectId('6102a3cbf245ef001c9a1837'), images: 'wrong-images-type-value', name: 'New product', price: '19.99', description: 'Product description', category: 'Jewelry' } 
 
             await createProduct(userId, productWithoutImages as any)
         } catch (error: any) {
@@ -120,7 +120,7 @@ describe('createProduct', () => {
             const _user = await User.findOne({ email: user.email }) as Document
             const userId = _user._id.toString()
 
-            const productWithoutImages = { author: new ObjectId('6102a3cbf245ef001c9a1837'), images: [1, true, null], name: 'New product', price: 19.99, description: 'Product description', category: 'Jewelry' } 
+            const productWithoutImages = { author: new ObjectId('6102a3cbf245ef001c9a1837'), images: [1, true, null], name: 'New product', price: '19.99', description: 'Product description', category: 'Jewelry' } 
 
             await createProduct(userId, productWithoutImages as any)
         } catch (error: any) {
@@ -156,7 +156,7 @@ describe('createProduct', () => {
     it('fails on non-string name in product values', async () => {
         const testUserId = '6102a3cbf245ef001c9a1837'
         
-        const wrongNameValue = (value: Exclude<any, string>) => ({images: ['image-1', 'image-2'], name: (value), price: 19.99, description: 'Product description', category: 'Jewelry' })
+        const wrongNameValue = (value: Exclude<any, string>) => ({images: ['image-1', 'image-2'], name: (value), price: '19.99', description: 'Product description', category: 'Jewelry' })
         
         expect(() => createProduct(testUserId, (() => wrongNameValue(true))())).to.throw(TypeError, 'The name is not a string.')
         expect(() => createProduct(testUserId, (() => wrongNameValue([]))())).to.throw(TypeError, 'The name is not a string.')
@@ -164,21 +164,21 @@ describe('createProduct', () => {
         expect(() => createProduct(testUserId, (() => wrongNameValue(1))())).to.throw(TypeError, 'The name is not a string.')
     })
     
-    it('fails on non-number price in product values', async () => {
+    it('fails on non-string price in product values', async () => {
         const testUserId = '6102a3cbf245ef001c9a1837'
         
-        const wrongNameValue = (value: Exclude<any, number>) => ({ images: ['image-1', 'image-2'], name: 'New product', price: value, description: 'Product description', category: 'Jewelry' })
+        const wrongNameValue = (value: Exclude<any, string>) => ({ images: ['image-1', 'image-2'], name: 'New product', price: value, description: 'Product description', category: 'Jewelry' })
         
-        expect(() => createProduct(testUserId, (() => wrongNameValue(true))())).to.throw(TypeError, 'The price is not a number.')
-        expect(() => createProduct(testUserId, (() => wrongNameValue([]))())).to.throw(TypeError, 'The price is not a number.')
-        expect(() => createProduct(testUserId, (() => wrongNameValue({}))())).to.throw(TypeError, 'The price is not a number.')
-        expect(() => createProduct(testUserId, (() => wrongNameValue('wrong-type-value'))())).to.throw(TypeError, 'The price is not a number.')
+        expect(() => createProduct(testUserId, (() => wrongNameValue(true))())).to.throw(TypeError, 'The price is not a string.')
+        expect(() => createProduct(testUserId, (() => wrongNameValue([]))())).to.throw(TypeError, 'The price is not a string.')
+        expect(() => createProduct(testUserId, (() => wrongNameValue({}))())).to.throw(TypeError, 'The price is not a string.')
+        expect(() => createProduct(testUserId, (() => wrongNameValue('wrong-type-value'))())).to.throw(TypeError, 'The price is not a string.')
     })
     
     it('fails on non-string description in product values', async () => {
         const testUserId = '6102a3cbf245ef001c9a1837'
         
-        const wrongNameValue = (value: Exclude<any, string>) => ({ images: ['image-1', 'image-2'], name: 'New product', price: 19.99, description: (value), category: 'Jewelry' })
+        const wrongNameValue = (value: Exclude<any, string>) => ({ images: ['image-1', 'image-2'], name: 'New product', price: '19.99', description: (value), category: 'Jewelry' })
         
         expect(() => createProduct(testUserId, (() => wrongNameValue(true))())).to.throw(TypeError, 'The description is not a string.')
         expect(() => createProduct(testUserId, (() => wrongNameValue([]))())).to.throw(TypeError, 'The description is not a string.')
@@ -189,7 +189,7 @@ describe('createProduct', () => {
     it('fails on non-string category in product values', async () => {
         const testUserId = '6102a3cbf245ef001c9a1837'
         
-        const wrongNameValue = (value: Exclude<any, string>) => ({ images: ['image-1', 'image-2'], name: 'New product', price: 19.99, description: 'Product description', category: (value) })
+        const wrongNameValue = (value: Exclude<any, string>) => ({ images: ['image-1', 'image-2'], name: 'New product', price: '19.99', description: 'Product description', category: (value) })
         
         expect(() => createProduct(testUserId, (() => wrongNameValue(true))())).to.throw(TypeError, 'The category is not a string.')
         expect(() => createProduct(testUserId, (() => wrongNameValue([]))())).to.throw(TypeError, 'The category is not a string.')

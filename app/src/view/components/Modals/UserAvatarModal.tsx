@@ -63,7 +63,7 @@ export default function UserAvatarModal({ handleToggleUpdateAvatarModal }: UserA
     }
 
     return (
-        <ModalContainer className="absolute top-0 left-0 bg-black bg-opacity-25" onClick={event => {
+        <ModalContainer className="fixed top-0 left-0 bg-black bg-opacity-25 z-30" onClick={event => {
             if(event.target === document.querySelector('.ModalContainer'))
                 handleToggleUpdateAvatarModal()
         }}>

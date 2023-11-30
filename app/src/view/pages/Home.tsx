@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import {
     HomeTop,
     Footer,
-    ProductArticle,
     PromotionsDeals,
     BestSellingProducts,
 } from "../components";

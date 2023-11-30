@@ -30,7 +30,7 @@ export default (userId: string, productId: string, productQuantity: number, fina
         const product = await Product.findById(productId)
         if(!product) throw new ExistenceError('Product not found.')
 
-        const existingProduct = user.cart.findIndex(product => product.productId === productId)
+        const existingProduct = user.cart.findIndex(product => product.productId.toString() === productId)
 
         if(existingProduct !== -1) user.cart.splice(existingProduct, 1)
 

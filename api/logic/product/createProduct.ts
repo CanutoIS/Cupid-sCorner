@@ -21,7 +21,7 @@ const { ExistenceError } = errors
 interface ProductValuesProps {
     name: string
     images: string[]
-    price: number
+    price: string
     description: string
     category: string
 }
@@ -32,6 +32,7 @@ export default (userId: string, productValues: ProductValuesProps): Promise<void
 
     const completedProductValues = {
         ...productValues,
+        price: parseFloat(productValues.price),
         author: userId
     }
 

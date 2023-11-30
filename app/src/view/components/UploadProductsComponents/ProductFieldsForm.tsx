@@ -22,15 +22,16 @@ interface ProductCategoryProps {
 
 export default function ProductFieldsForm({ productValues, handleOnChange, handleRenderImages, handleSubmit }: ProductCategoryProps):JSX.Element {
     return (
-        <Form className="flex flex-col gap-4 p-8 w-1/4" onSubmit={handleSubmit}>
-            <div className="flex items-center">
+        <Form className="flex flex-col gap-4 p-8 min-w-[250px] sm:px-16 lg:px-8" onSubmit={handleSubmit}>
+            <h1 className=" w-full text-center mb-4 poppins lg:hidden text-4xl">Product fields</h1>
+            <div className="flex items-center min-w-[200px]">
                 <div className='flex flex-col gap-2 w-full'>
                     <b>Name of the profuct</b>
                     <Input name="name" className="w-full" placeholder="Name of the product" onChange={handleOnChange} defaultValue={productValues.name} autoComplete="off"/>
                 </div>
             </div>
 
-            <div className="w-full border-t border-gray-500"></div>
+            <div className="w-full border-t border-gray-500"/>
 
             <div className="flex items-center gap-10">
                 <div className='flex flex-col gap-2 w-full'>
@@ -39,16 +40,14 @@ export default function ProductFieldsForm({ productValues, handleOnChange, handl
                 </div>
             </div>
             
-            <div className="w-full border-t border-gray-500"></div>
+            <div className="w-full border-t border-gray-500"/>
             
-            <div>
-                <div className='flex flex-col gap-2 w-full'>
-                    <b>Description of the profuct</b>
-                    <textarea name="description" className="w-full h-40 p-2" defaultValue={productValues.description} onChange={handleOnChange}></textarea>
-                </div>
+            <div className='flex flex-col gap-2 w-full'>
+                <b>Description of the profuct</b>
+                <textarea name="description" className="w-full h-40 p-2" defaultValue={productValues.description} onChange={handleOnChange}></textarea>
             </div>
             
-            <div className="w-full border-t border-gray-500"></div>
+            <div className="w-full border-t border-gray-500"/>
 
             <div className='flex flex-col gap-2 w-full'>
                 <b>Product category</b>
@@ -69,15 +68,20 @@ export default function ProductFieldsForm({ productValues, handleOnChange, handl
                 </select>
             </div>
             
-            <div className="w-full border-t border-gray-500"></div>
-            <div>
-                <div className='flex flex-col gap-2 w-full'>
-                    <b>Price of the profuct</b>
-                    <Input name="price" className='w-full' type="number" min='1' step="0.01" defaultValue={productValues.price} autoComplete="off" onChange={handleOnChange}/>
-                </div>
+            <div className="w-full border-t border-gray-500"/>
+
+            <div className='flex flex-col gap-2 w-full'>
+                <b>Price of the profuct</b>
+                <Input name="price" className='w-full' type="number" min='1' step="0.01" defaultValue={productValues.price} autoComplete="off" onChange={handleOnChange}/>
             </div>
 
             <div className="w-full border-t border-gray-500"></div>
+
+            <div className="w-full flex justify-center my-2 lg:hidden">
+                <span className="material-symbols-outlined">arrow_downward_alt</span>
+                <h2 className="text-xl text-center">Check out the preview of the product below</h2>
+                <span className="material-symbols-outlined">arrow_downward_alt</span>
+            </div>
 
             <Button className="">Upload product</Button>
         </Form>

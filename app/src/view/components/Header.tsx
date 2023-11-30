@@ -1,6 +1,6 @@
-import { Button } from "../library/index.js";
-import { useAppContext, useHandleErrors } from "../hooks/index.js";
-import { isUserLoggedIn, retrieveUser } from "../../logic/index.js";
+import { Button } from "../library";
+import { useAppContext, useHandleErrors } from "../hooks";
+import { isUserLoggedIn, retrieveUser } from "../../logic";
 import { useEffect, useState } from "react";
 
 type User = {
@@ -11,15 +11,11 @@ type User = {
     cart: Array<string | number>
 }
 
-interface Header {
-    handleToggleMenu: () => void
-}
-
-export default function Header({ handleToggleMenu }: Header): JSX.Element {
-    const [user, setUser] = useState<User | null>(null)
-
+export default function Header(): JSX.Element {
     const { navigate, lastUpdate, freeze, unfreeze } = useAppContext()
     const handleErrors = useHandleErrors()
+    
+    const [user, setUser] = useState<User | null>(null)
 
     useEffect(() => {
         if(isUserLoggedIn())
@@ -67,9 +63,6 @@ export default function Header({ handleToggleMenu }: Header): JSX.Element {
                                 :
                                 ''
                             }
-                        </div>
-                        <div className="flex lg:hidden justify-center items-center p-3 rounded-full bg-white cursor-pointer active:bg-gray-200 select-none" onClick={handleToggleMenu}>
-                            <span className="material-symbols-outlined notranslate">menu</span>
                         </div>
                     </div>
                     :

@@ -7,7 +7,7 @@ interface AskLoginModal {
 
 export default function AskLoginModal({ handleGoToLogin, handleCloseModal }: AskLoginModal):JSX.Element {
     return <ModalContainer className="notLoggedUserModal fixed top-0 left-0 z-30 h-full w-full bg-black bg-opacity-25">
-        <ModalWindow className="h-80 w-[500px] text-center">
+        <ModalWindow className="h-80 w-80 sm:w-[500px] text-center">
             <h1 className='text-3xl w-2/3'>To proceed with your purchase, please log in or create an account.</h1>
             <div className="flex w-full justify-evenly">
                 <Button onClick={handleGoToLogin}>Login now!</Button>

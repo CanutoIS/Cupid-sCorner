@@ -24,5 +24,8 @@
     "src",
     "node_modules/com"
   ],
+  "exclude": [
+    "node_modules/com/com.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,4 +1,4 @@
-import { isUserLoggedIn, retrieveProduct, saveProductToCart } from "../../logic"
+import { isCurrentUser, isUserLoggedIn, retrieveProduct, saveProductToCart } from "../../logic"
 import { context } from "../../ui"
 import { AskLoginModal, Footer } from "../components"
 import { useAppContext, useHandleErrors } from "../hooks"
@@ -7,6 +7,7 @@ import { useRef, FormEvent, useEffect, useState, ChangeEvent } from 'react'
 
 interface ProductProps {
     id: string
+    author: string
     name: string
     category: string
     images: string[]
@@ -27,7 +28,6 @@ export default function ProductPage(): JSX.Element {
     const [productImage, setProductImage] = useState<string>('')
     const [finalPrice, setFinalPrice] = useState<number>()
     const [notLoggedUserModal, setNotLoggedUserModal] = useState<boolean>(false)
-    // const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth)
     const productQuantity = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
@@ -43,17 +43,9 @@ export default function ProductPage(): JSX.Element {
 
             unfreeze && unfreeze()
 
-            // window.addEventListener("resize", handleResize)
-
-            return () => {
-                context.productId = null
-                
-                // window.removeEventListener("resize", handleResize)
-            }
+            return () => context.productId = null
         })
     }, [])
-    
-    // const handleResize = () => setScreenWidth(window.innerWidth)
 
     const handleGoToLogin = () => {
         document.body.classList.remove('overflow-hidden')
@@ -74,15 +66,19 @@ export default function ProductPage(): JSX.Element {
 
         handleErrors(async () => {
             if(product) {
+                freeze && freeze()
+                
                 const number = e.target.quantity.value
-
+                
                 const productQuantity = parseInt(number)
-
+                
                 const finalPrice = productQuantity * product.price
                 
                 await saveProductToCart(context.productId, productQuantity, finalPrice)
                 
                 setLastUpdate && setLastUpdate(Date.now())
+                
+                unfreeze && unfreeze()
             }
         })
     }
@@ -159,7 +155,7 @@ export default function ProductPage(): JSX.Element {
                         <p>Category: <b>{product.category}</b></p>
                         <p>Price: <b>{product.price}</b></p>
                     </div>
-                    <Form className="flex-col items-center" onSubmit={handleAddToCart}>
+                    {!isCurrentUser(product.author) && <Form className="flex-col items-center" onSubmit={handleAddToCart}>
                         <div className="flex items-center justify-between gap-4">
                             <div className='flex items-center gap-1'>
                                 <p className="text-center">Final price:</p>
@@ -171,7 +167,7 @@ export default function ProductPage(): JSX.Element {
                             </div>
                         </div>
                         <Button className="hover:bg-gray-200 hover:border-gray-200 mt-6 w-fit">Add to cart</Button>
-                    </Form>
+                    </Form>}
                 </div>
             </div>
             

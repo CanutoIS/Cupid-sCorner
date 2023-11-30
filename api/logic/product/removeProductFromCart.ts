@@ -27,7 +27,7 @@ export default (userId: string, productId: string): Promise<void> => {
         const user = await User.findById(userId)
         if(!user) throw new ExistenceError('User not found')
 
-        const productToBuy = user.cart.findIndex(product => product.productId === productId)
+        const productToBuy = user.cart.findIndex(product => product.productId.toString() === productId)
         if(productToBuy === -1) throw new ExistenceError('Product not found')
 
         user.cart.splice(productToBuy, 1)

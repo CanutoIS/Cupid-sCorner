@@ -18,7 +18,7 @@ export default function logoutModal({ handleToggleLogoutModal}: LogoutModalProps
     }
 
     return (
-    <ModalContainer className="absolute top-0 left-0 bg-black bg-opacity-25" onClick={event => {
+    <ModalContainer className="fixed top-0 left-0 bg-black bg-opacity-25 z-30" onClick={event => {
         if(event.target === document.querySelector('.ModalContainer'))
         handleToggleLogoutModal()
     }}>
@@ -26,7 +26,7 @@ export default function logoutModal({ handleToggleLogoutModal}: LogoutModalProps
             <p className="text-2xl">Are you sure you want to log out?</p>
             <div className="w-full flex justify-evenly">
                 <Button className="w-32" onClick={handleLogout}>Log out</Button>
-                <Button className="w-32" onClick={() => handleToggleLogoutModal()}>Cancel</Button>
+                <Button className="w-32" onClick={handleToggleLogoutModal}>Cancel</Button>
             </div>
         </ModalWindow>
     </ModalContainer>

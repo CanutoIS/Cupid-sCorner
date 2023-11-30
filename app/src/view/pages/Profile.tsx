@@ -1,39 +1,53 @@
 import { useState, useEffect } from "react"
 import { Container } from "../library"
 import { Footer, LogoutModal, OwnProductsPanel, ProfileSideBar, UserAvatarModal } from "../components"
+import { useGetStopHeight } from "../hooks"
 
 interface Profile {
     menu: boolean
+    handleToggleMenu: () => void
 }
 
-export default function Profile({ menu }: Profile): JSX.Element {
-    const [stopHeight, setStopHeight] = useState(0)
+export default function Profile({ menu, handleToggleMenu }: Profile): JSX.Element {
+    const stopHeight = useGetStopHeight()
+
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+    useEffect(() => {
+        setScreenWidth(window.innerWidth)
+        
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [])
+
+    useEffect(() => {
+        if(screenWidth > 1024 && !menu)
+            handleToggleMenu()
+
+        if(screenWidth < 1024 && menu)
+            handleToggleMenu()
+    }, [screenWidth]);
+
+    const handleResize = () => setScreenWidth(window.innerWidth)
+
     const [removalState, setRemovalState] = useState(false)
     const [logoutModal, setLogoutModal] = useState(false)
     const [updateAvatarModal, setUpdateAvatarModal] = useState(false)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY
-            const windowHeight = window.innerHeight
-            const documentHeight = document.documentElement.scrollHeight
-            const remainingSpace = documentHeight - scrollPosition - windowHeight
-
-            const bottomHeight = remainingSpace < 200 ? 200 - remainingSpace : 0
-            
-            setStopHeight(bottomHeight)
-          }
-      
-          window.addEventListener('scroll', handleScroll)
-      
-          return () => {
-            window.removeEventListener('scroll', handleScroll)
-          }
-    }, [])
-
-    const handleToggleRemovalState = () => setRemovalState(!removalState)
+    const handleToggleRemovalState = () => {
+        handleToggleMenu()
     
-    const handleToggleLogoutModal = () => setLogoutModal(!logoutModal)
+        setRemovalState(!removalState)
+    }
+    
+    const handleToggleLogoutModal = () => {
+        !logoutModal ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden')
+    
+        setLogoutModal(!logoutModal)
+    }
 
     const handleToggleUpdateAvatarModal = () => setUpdateAvatarModal(!updateAvatarModal)
 
@@ -41,6 +55,8 @@ export default function Profile({ menu }: Profile): JSX.Element {
         <section className="w-full h-full m-auto pt-28 flex items-center">
             <OwnProductsPanel
                 removalState={removalState}
+                handleToggleMenu={handleToggleMenu}
+                menu={menu}
             />
             <ProfileSideBar
                 stopHeight={stopHeight}

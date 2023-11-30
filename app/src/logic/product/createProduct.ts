@@ -38,7 +38,7 @@ export default function createProduct(productValues: productValues) {
     })
 
     formData.append("name", name);
-    formData.append("price", price);
+    formData.append("price", price.toString());
     formData.append("description", description);
     formData.append("category", category);
 

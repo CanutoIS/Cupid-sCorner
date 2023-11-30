@@ -23,7 +23,7 @@ interface ProductValuesProps {
     author: InstanceType<typeof ObjectId>
     name: string
     images: string[]
-    price: number
+    price: string
     description: string
     category: string
 }

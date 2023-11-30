@@ -109,7 +109,7 @@ label {
 }
 
 .opened-menu {
-  left: 0;
+  right: 0;
   animation: slide 0.3s linear forwards;
 }
 

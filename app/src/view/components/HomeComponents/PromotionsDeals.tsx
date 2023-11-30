@@ -18,14 +18,14 @@ export default function PromotionsDeals({ products,screenWidth }: PromotionsDeal
         <div className="flex flex-col md:flex-row gap-5">
             <div className="w-full flex flex-col gap-4 justify-around items-center p-4 bg-white rounded cursor-pointer shadow-md hover:shadow-gray-400 max-w-[500px]">
                 <p className="text-lg">Valentine's Special Offer: Buy our Heart-Shaped Locket Necklace for 39.99€ and get a second one at half price! Keep your cherished memories close with this beautiful piece of jewelry. Offer valid until February 14th.</p>
-                {products && <div className="flex md:gap-3">
-                    <article className="h-60 w-40 md:w-48 md:p-2 bg-white flex flex-col justify-around items-center cursor-pointer shadow-md">
+                {products && <div className="flex gap-1 md:gap-3">
+                    <article className="h-60 w-40 md:w-48 p-2 bg-white flex flex-col justify-around items-center cursor-pointer shadow-md">
                         <img src='product-images/heart-necklace.png' alt='Heart-Shaped Locket Necklace' className="h-28"/>
                         <p className=" poppins font-bold">Heart-Shaped Locket Necklace</p>
                         <p className="w-full text-left">39.99€</p>
                         <p className="w-full text-left">Rating: 4.3 stars</p>
                     </article>
-                    <article className="h-60 w-40 md:w-48 md:p-2 bg-white flex flex-col justify-around items-center cursor-pointer shadow-md">
+                    <article className="h-60 w-40 md:w-48 p-2 bg-white flex flex-col justify-around items-center cursor-pointer shadow-md">
                         <img src='product-images/heart-necklace.png' alt='Heart-Shaped Locket Necklace' className="h-28"/>
                         <p className=" poppins font-bold">Heart-Shaped Locket Necklace</p>
                         <p className="w-full text-left"><s>39.99€</s> <b>19.99€</b></p>

@@ -11,7 +11,7 @@ export default handleErrors((req, res) => {
         name,
         images,
         description,
-        price,
+        price: price,
         category
     }
 

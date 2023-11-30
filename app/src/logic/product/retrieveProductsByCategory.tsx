@@ -1,6 +1,5 @@
 import { errors, validators } from 'com'
 
-const { TypeError } = errors
 const { validateCategory } = validators
 
 /**

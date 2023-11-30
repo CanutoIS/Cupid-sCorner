@@ -1,5 +1,4 @@
 import { errors, validators } from 'com'
-import { context } from '..'
 
 const { validateId } = validators
 

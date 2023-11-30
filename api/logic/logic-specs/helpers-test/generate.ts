@@ -15,7 +15,7 @@ interface Generator {
         name: string,
         images: string[],
         description: string,
-        price: number,
+        price: string,
         category: string
     }
 }
@@ -33,7 +33,7 @@ const generate: Generator = {
         name: `name-${Math.random()}.com`,
         images: [`image-${Math.random()}`, `image-${Math.random()}`, `image-${Math.random()}`],
         description: `avatar-${Math.random()}`,
-        price: parseFloat((Math.random() * 100).toFixed(2)),
+        price: (Math.random() * 100).toFixed(2),
         category: 'Jewelry'
     })
 };

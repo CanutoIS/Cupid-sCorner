@@ -83,13 +83,19 @@ export default function UploadProduct(): JSX.Element {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
+        document.body.classList.add('overflow-hidden')
+
         setUploadConfirmation(true)
     }
 
-    const handleReturnToPreview = () => setUploadConfirmation(false)
+    const handleReturnToPreview = () => {
+        document.body.classList.remove('overflow-hidden')
+        
+        setUploadConfirmation(false)
+    }
 
-    return <Container className="bg-red-100 h-full overflow-scroll pt-28">
-        <section className="w-screen flex my-6">
+    return <Container className="bg-red-50 h-full overflow-scroll pt-28">
+        <section className="w-screen flex flex-col lg:flex-row lg:my-6">
             <ProductFieldsForm
                 productValues={productValues}
                 handleOnChange={handleOnChange}

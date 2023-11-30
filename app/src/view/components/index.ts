@@ -17,6 +17,8 @@ import CategoriesSectionBelow from "./HomeComponents/CategoriesSectionBelow";
 import BestSellingProducts from "./HomeComponents/BestSellingProducts";
 import LoaderContent from "./LoaderContent";
 import AskLoginModal from "./Modals/AskLoginModal";
+import CartPageSideBar from "./CartPageComponents/CartPageSideBar";
+import ProductsToBuyPanel from "./CartPageComponents/ProductsToBuyPanel";
 
 export {
     Header,
@@ -38,4 +40,6 @@ export {
     BestSellingProducts,
     AskLoginModal,
     LoaderContent,
+    CartPageSideBar,
+    ProductsToBuyPanel
 }

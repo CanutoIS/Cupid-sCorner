@@ -50,7 +50,7 @@ function validateCategory(category: string) {
 interface ProductFields {
     name: string
     images: string[]
-    price: number
+    price: string
     description: string
     category: string
 }
@@ -63,7 +63,7 @@ const validateProductFields = (productFields: ProductFields) => {
     if(requiredProperties.some(field => !productFields[field])) throw new ContentError('There are missing product fields in the values passed.')
     if(!Array.isArray(productFields.images) || !productFields.images.every(image => typeof image === 'string')) throw new TypeError('The images are not an array of strings.')
     if(typeof productFields.name !== 'string') throw new TypeError('The name is not a string.')
-    if(typeof productFields.price !== 'number') throw new TypeError('The price is not a number.')
+    if(typeof productFields.price !== 'string') throw new TypeError('The price is not a string.')
     if(typeof productFields.description !== 'string') throw new TypeError('The description is not a string.')
     if(typeof productFields.category !== 'string') throw new TypeError('The category is not a string.')
 }
