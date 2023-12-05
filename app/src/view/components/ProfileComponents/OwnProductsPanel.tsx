@@ -86,7 +86,7 @@ export default function OwnProductsPanel({ userProducts, setUserProducts, remova
                 }
     
                 <h1 className='mx-2 mb-2 mt-16 sm:mt-6 w-full text-center'>Own products</h1>
-                <ul className="flex justify-center sm:justify-normal w-11/12 sm:px-10 md:px-20 gap-16 py-10 flex-wrap bg-red-50 rounded-2xl border border-gray-700 mb-10 min-h-[600px]">
+                <ul className="flex justify-center sm:justify-around w-11/12 sm:px-10 md:px-20 gap-16 py-10 flex-wrap bg-red-50 rounded-2xl border border-gray-700 mb-10 min-h-[600px]">
                     {userProducts && userProducts.length
                         ?
                         (userProducts.map(product => (

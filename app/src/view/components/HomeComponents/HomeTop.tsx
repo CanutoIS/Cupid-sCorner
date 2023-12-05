@@ -1,4 +1,3 @@
-// import { useState, useEffect } from "react";
 import { useAppContext, useSetImageToPresent } from "../../hooks";
 import { useHandleCurrentCategories } from "../../hooks";
 import { context } from "../../../ui";

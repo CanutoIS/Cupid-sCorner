@@ -110,8 +110,4 @@
     "**/*.ts",
     "logic/uploadAllProducts.ts"
   ],
-  "exclude": [
-    "node_modules",
-    // "logic/logic-specs/**/*"
-  ]
 }
