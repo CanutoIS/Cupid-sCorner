@@ -16,14 +16,14 @@ export default function CategeriesSectionBelow({ screenWidth, handleShowProducts
     <>
         <ul className="w-full flex justify-between">
             {categories.slice(0, 6).map((category, index) => (
-                <li key={category} className={`p-5 border border-black hover:shadow-md hover:shadow-black bg-cover bg-center hover:bg-red-50 cursor-pointer rounded font-bold text-white m-1`} onClick={() => handleShowProducts(category)} style={{
+                <li key={category} className={`p-5 border border-black hover:shadow-md hover:shadow-black bg-cover bg-center hover:bg-red-50 cursor-pointer rounded font-bold text-white m-1 text-center`} onClick={() => handleShowProducts(category)} style={{
                     backgroundImage: `url(/category-images/category-${index}.jpg)`
                 }}>{category}</li>
                 ))}
         </ul>
         <ul className="w-screen max-w-full flex justify-between">
             {categories.slice(6, 12).map((category, index) => (
-                <li key={category} className={`p-5 border border-black hover:shadow-md hover:shadow-black bg-cover bg-center hover:bg-red-50 cursor-pointer rounded font-bold text-white m-1`} onClick={() => handleShowProducts(category)} style={{
+                <li key={category} className={`p-5 border border-black hover:shadow-md hover:shadow-black bg-cover bg-center hover:bg-red-50 cursor-pointer rounded font-bold text-white m-1 text-center`} onClick={() => handleShowProducts(category)} style={{
                     backgroundImage: `url(/category-images/category-${index + 6}.jpg)`
                 }}>{category}</li>
                 ))}
@@ -32,7 +32,7 @@ export default function CategeriesSectionBelow({ screenWidth, handleShowProducts
     :
         <ul className="w-full flex flex-wrap justify-evenly">
             {categories.map((category, index) => (
-                <li key={category} className={`w-[140px] px-5 py-2 mt-4 border border-black hover:shadow-md hover:shadow-black bg-cover bg-center hover:bg-red-50 cursor-pointer rounded font-bold text-white flex justify-center items-center m-1`} onClick={() => handleShowProducts(category)} style={{
+                <li key={category} className={`w-[140px] px-5 py-2 mt-4 border border-black hover:shadow-md hover:shadow-black bg-cover bg-center hover:bg-red-50 cursor-pointer rounded font-bold text-white flex justify-center items-center m-1 text-center`} onClick={() => handleShowProducts(category)} style={{
                     backgroundImage: `url(/category-images/category-${index}.jpg)`
                 }}>{category}</li>
             ))}

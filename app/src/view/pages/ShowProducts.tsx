@@ -53,17 +53,18 @@ export default function ShowProducts():JSX.Element {
                 <p className="flex items-center gap-2 cursor-pointer" onClick={handleGoToHome}><span className="material-symbols-outlined notranslate">keyboard_backspace</span>Home</p>
                 <p className={`flex items-center justify-end gap-2 cursor-pointer text-right ${context.category === 'All products' ? 'hidden' : ''}`} onClick={handleShowAllProducts}>View all products<span className="material-symbols-outlined notranslate">arrow_right_alt</span></p>
             </div>
-            <h1 className="text-4xl text-center">{context.category}</h1>
+            <h1 className="text-4xl text-center mt-6">{context.category}</h1>
             <ShowCategoriesTopBar
                 setCategory={setCategory}
             />
-            <div className="w-full flex flex-wrap justify-center gap-16 px-6 sm:px-20 xl:px-40 py-20 mb-10 bg-red-50">
+            <div className="w-full flex flex-wrap justify-center gap-16 px-6 sm:px-20 xl:px-40 py-20 mb-10 bg-red-50 min-h-[300px]">
                 {products && products.map(product => (
                     <ProductArticle
                         key={product.id}
                         product={product}
                     />
-                    ))}
+                ))}
+                {!products?.length && <p className="text-2xl">No existing products</p>}
             </div>
         </section>
         <Footer/>

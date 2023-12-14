@@ -10,5 +10,5 @@ export const categories = [
     "Health & Wellness",
     "Plants and Gardening",
     "Games and Puzzles",
-    "Pets and Pet Gifts",
+    "Pet Gifts",
   ];

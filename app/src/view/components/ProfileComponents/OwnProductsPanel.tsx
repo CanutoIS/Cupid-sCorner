@@ -93,7 +93,7 @@ export default function OwnProductsPanel({ userProducts, setUserProducts, remova
                             <div key={product.id} className="w-fit h-fit border border-gray-300">
                                 <li  className="w-48 h-64 py-2 px-4 flex flex-col items-center bg-white cursor-pointer hover:bg-gray-100" onClick={() => handleGoToProduct(product.id)}>
                                     <img src={product.image} alt="product image" className="mb-2 h-32" />
-                                    <p className="w-full text-center font-bold mb-2">{product.name}</p>
+                                    {product.name.length <= 30 ? <p className="w-full text-center font-bold mb-2">{product.name}</p> : <p className="w-full text-center font-bold mb-2">{product.name.substring(0, 30) + '...'}</p>}
                                     <p className="w-full flex items-center gap-2 text-start">{product.price.toFixed(2)}€</p>
                                     <p className="w-full text-start">Rating: {product.rating}{product.rating === '1' ? ' star' : ' stars'}</p>
                                 </li>

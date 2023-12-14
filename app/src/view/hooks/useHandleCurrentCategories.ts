@@ -6,7 +6,6 @@ export default function useHandleCurrentCategories() {
     const [currentCategories, setCurrentCategories] = useState<string[]>([])
 
     useEffect(() => {
-        // const handleSetCurrentCategories = () => {
         const start = (stateCategories - 1) * 4
 
         const end = start + 4

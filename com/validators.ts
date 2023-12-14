@@ -39,7 +39,7 @@ function validateToken(token: string, explanation: string = 'token') {
     if (token.split('.').length !== 3) throw new ContentError (`${explanation} is not valid.`)
 }
 
-const categories = ['Romantic Gifts', 'Jewelry', 'Romantic Experiences', 'Clothes and Accessories', 'Technology and Gadgets', 'Home Decoration', 'Kitchen Appliances', 'Romantic Books and Movies', 'Health & Wellness', 'Plants and Gardening', 'Games and Puzzles', 'Pets and Pet Gifts']
+const categories = ['Romantic Gifts', 'Jewelry', 'Romantic Experiences', 'Clothes and Accessories', 'Technology and Gadgets', 'Home Decoration', 'Kitchen Appliances', 'Romantic Books and Movies', 'Health & Wellness', 'Plants and Gardening', 'Games and Puzzles', 'Pet Gifts']
 
 function validateCategory(category: string) {
     if (typeof category !=='string') throw new TypeError(`The category is not a string.`)

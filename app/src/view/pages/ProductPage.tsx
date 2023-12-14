@@ -113,7 +113,7 @@ export default function ProductPage(): JSX.Element {
         {product ? <section className="w-full max-w-[1400px] hidden xl:flex flex-col bg-red-50 min-h-[700px] gap-6 p-10 2xl:p-20">
             <div className="flex gap-10 justify-between">
                 <div className="flex w-3/5 p-4 bg-white rounded-xl gap-2">
-                    <div className="flex flex-col w-[100px] gap-2">
+                    <div className="flex flex-col w-[100px] gap-2 overflow-scroll max-h-[570px]">
                         {product && product.images.map(image => (
                             <img key={image} src={image} alt="product image" className='w-36 hover:bg-white cursor-pointer' onMouseOver={() => setProductImage(image)}/>
                         ))}

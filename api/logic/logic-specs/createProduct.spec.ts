@@ -172,7 +172,7 @@ describe('createProduct', () => {
         expect(() => createProduct(testUserId, (() => wrongNameValue(true))())).to.throw(TypeError, 'The price is not a string.')
         expect(() => createProduct(testUserId, (() => wrongNameValue([]))())).to.throw(TypeError, 'The price is not a string.')
         expect(() => createProduct(testUserId, (() => wrongNameValue({}))())).to.throw(TypeError, 'The price is not a string.')
-        expect(() => createProduct(testUserId, (() => wrongNameValue('wrong-type-value'))())).to.throw(TypeError, 'The price is not a string.')
+        expect(() => createProduct(testUserId, (() => wrongNameValue(99.99))())).to.throw(TypeError, 'The price is not a string.')
     })
     
     it('fails on non-string description in product values', async () => {

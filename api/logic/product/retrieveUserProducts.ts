@@ -21,7 +21,7 @@ const { ExistenceError } = errors
 type ProductProps = {
     id: string
     name: string
-    images: string[]
+    image: string
     description: string
     price: number
     category: string

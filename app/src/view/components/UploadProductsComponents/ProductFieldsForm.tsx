@@ -64,7 +64,7 @@ export default function ProductFieldsForm({ productValues, handleOnChange, handl
                     <option value='Health & Wellness'>Health & Wellness</option>
                     <option value='Plants and Gardening'>Plants and Gardening</option>
                     <option value='Games and Puzzles'>Games and Puzzles</option>
-                    <option value='Pets and Pet Gifts'>Pets and Pet Gifts</option>
+                    <option value='Pet Gifts'>Pet Gifts</option>
                 </select>
             </div>
             
